@@ -1,8 +1,8 @@
 <?php
 
-// function getPdoConnection(){
+function getPdoConnection(){
 
- $init = parse_ini_file("../../myconf.ini", true);
+ $init = parse_ini_file(BASE_DIR."myconf.ini");
  $host = $init["host"];
  $db = $init["db"];
  $user = $init["username"];
@@ -17,5 +17,5 @@
      echo $e->getMessage();
  }
 
-//  return $pdo;
-// }
+ return $pdo;
+}
