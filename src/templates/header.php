@@ -25,6 +25,15 @@
             <li class="nav-item">
             <a class="nav-link" href="user.php">Rekisteröidy</a>
             </li>
+            <li class="nav-item">
+            <?php 
+                if(isset($_SESSION["username"])){
+                    echo '<a class="nav-link bg-danger" href="logout.php">Kirjaudu ulos</a>';
+                }else{
+                    echo '<a class="nav-link bg-success" href="login.php">Kirjaudu sisään</a>';
+                }
+            ?>
+            </li>
         </ul>
         </div>
     </div>
