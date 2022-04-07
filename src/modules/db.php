@@ -2,7 +2,7 @@
 
 // function getPdoConnection(){
 
- $init = parse_ini_file(BASE_DIR."myconf.ini");
+ $init = parse_ini_file("../../myconf.ini", true);
  $host = $init["host"];
  $db = $init["db"];
  $user = $init["username"];
