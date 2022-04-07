@@ -1,5 +1,7 @@
 <?php
     include TEMPLATES_DIR."header.php";
+    include MODULES_DIR.'user.php';
+
 ?>
 
 <form action="user.php" method="post">
