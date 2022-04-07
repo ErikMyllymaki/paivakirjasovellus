@@ -18,18 +18,15 @@ create table pk_merkinta (
     foreign key (kayttaja_id) references kayttaja(kayttaja_id)
 );
 
-create table avainsanarivi (
-    merkinta_id int,
-    avainsana_id int,
-    primary key (merkinta_id, avainsana_id),
-    foreign key (merkinta_id) references pk_merkinta(merkinta_id)
-);
-
 create table avainsana (
     avainsana_id int primary key AUTO_INCREMENT,
-    nimi varchar(50) not null,
-    foreign key (avainsana_id) references avainsanarivi(avainsana_id)
-)
+    nimi varchar(50) not null
+);
 
-
-
+create table avainsanarivi (
+    rivinro int primary key AUTO_INCREMENT,
+    merkinta_id int,
+    avainsana_id int,
+    foreign key (merkinta_id) references pk_merkinta(merkinta_id),
+    foreign key (avainsana_id) references avainsana(avainsana_id)
+);
