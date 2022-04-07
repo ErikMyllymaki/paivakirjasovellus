@@ -1,5 +1,5 @@
 <?php
-    include TEMPLATES_DIR.'head.php';
+    include TEMPLATES_DIR.'header.php';
 
-    include TEMPLATES_DIR.'foot.php.';
+    include TEMPLATES_DIR.'footer.php.';
 ?>
