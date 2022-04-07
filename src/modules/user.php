@@ -5,7 +5,7 @@ function getUsers() {
 
     try {
         $pdo = getPdoConnection();
-        $sql = "SELECT * FROM kayttaja";
+        $sql = "SELECT kayttaja_id, etunimi, sukunimi, kayttajanimi, salasana FROM kayttaja";
         $people = $pdo->query($sql);
 
         return $people->fetchAll();
