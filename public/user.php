@@ -2,6 +2,21 @@
     include TEMPLATES_DIR."header.php";
     include MODULES_DIR.'user.php';
 
+    $fname = filter_input(INPUT_POST, "fname");
+    $lname = filter_input(INPUT_POST, "lname");
+    $uname = filter_input(INPUT_POST, "uname");
+    $pw = filter_input(INPUT_POST, "pw");
+
+    if(isset($fname)){
+        try{
+            addPerson($fname, $lname, $uname, $pw);
+            echo '<div class="alert alert-success" role="alert">Käyttäjä lisätty!!</div>';
+        }catch(Exception $e){
+            echo '<div class="alert alert-danger" role="alert">'.$e->getMessage().'</div>';
+        }
+        
+    }
+
 ?>
 
 <form action="user.php" method="post">
