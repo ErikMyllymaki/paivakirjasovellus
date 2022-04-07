@@ -7,7 +7,9 @@ use paivakirja;
 create table kayttaja (
     kayttaja_id int primary key AUTO_INCREMENT,
     etunimi varchar(50) not null,
-    sukunimi varchar(50) not null
+    sukunimi varchar(50) not null,
+    kayttajanimi varchar(50) UNIQUE,
+    salasana varchar(50)
 );
 
 create table pk_merkinta (
