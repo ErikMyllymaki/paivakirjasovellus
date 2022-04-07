@@ -28,9 +28,9 @@
             <li class="nav-item">
             <?php 
                 if(isset($_SESSION["username"])){
-                    echo '<a class="nav-link bg-danger" href="logout.php">Kirjaudu ulos</a>';
+                    echo '<a class="nav-link bg-danger p-2" href="logout.php">Kirjaudu ulos</a>';
                 }else{
-                    echo '<a class="nav-link bg-success" href="login.php">Kirjaudu sisään</a>';
+                    echo '<a class="nav-link bg-success p-2" href="login.php">Kirjaudu sisään</a>';
                 }
             ?>
             </li>
