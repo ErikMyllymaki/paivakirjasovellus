@@ -23,10 +23,7 @@
             <a class="nav-link active" aria-current="page" href="./">Home</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="people.php">jotaki</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="person.php">jotaki</a>
+            <a class="nav-link" href="user.php">Rekisteröidy</a>
             </li>
         </ul>
         </div>
