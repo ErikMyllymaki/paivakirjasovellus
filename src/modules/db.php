@@ -12,7 +12,6 @@ function getPdoConnection(){
 
  try {
      $pdo = new PDO($dsn, $user, $password);
-     echo "yhteys luotu";
  } catch (PDOException $e) {
      echo $e->getMessage();
  }
