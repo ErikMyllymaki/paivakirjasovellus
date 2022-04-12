@@ -1,6 +1,22 @@
 <?php
     include TEMPLATES_DIR."header.php";
     include MODULES_DIR.'user.php';
+    include TEMPLATES_DIR.'footer.php';
+
+    $fname = filter_input(INPUT_POST, "fname");
+    $lname = filter_input(INPUT_POST, "lname");
+    $uname = filter_input(INPUT_POST, "uname");
+    $pw = filter_input(INPUT_POST, "pw");
+
+    if(isset($fname)){
+        try{
+            addUser($fname, $lname, $uname, $pw);
+            echo '<div class="alert alert-success" role="alert">Käyttäjä lisätty!!</div>';
+        }catch(Exception $e){
+            echo '<div class="alert alert-danger" role="alert">'.$e->getMessage().'</div>';
+        }
+        
+    }
 
 ?>
 
@@ -19,7 +35,3 @@
 
         <input type="submit" class="btn btn-primary" value="Rekisteröidy">
 </form>
-
-<?php
-    include TEMPLATES_DIR.'footer.php';
-?>
