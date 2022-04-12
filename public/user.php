@@ -19,7 +19,7 @@
     }
 
 ?>
-
+<h3>Rekisteröidy</h3>
 <form action="user.php" method="post">
         <label for="fname">Etunimi:</label><br>
         <input type="text" name="fname" id="fname"><br>
