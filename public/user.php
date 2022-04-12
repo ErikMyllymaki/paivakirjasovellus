@@ -1,6 +1,7 @@
 <?php
     include TEMPLATES_DIR."header.php";
     include MODULES_DIR.'user.php';
+    include TEMPLATES_DIR.'footer.php';
 
     $fname = filter_input(INPUT_POST, "fname");
     $lname = filter_input(INPUT_POST, "lname");
@@ -34,7 +35,3 @@
 
         <input type="submit" class="btn btn-primary" value="Rekisteröidy">
 </form>
-
-<?php
-    include TEMPLATES_DIR.'footer.php';
-?>
