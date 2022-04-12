@@ -9,7 +9,7 @@
 
     if(isset($fname)){
         try{
-            addPerson($fname, $lname, $uname, $pw);
+            addUser($fname, $lname, $uname, $pw);
             echo '<div class="alert alert-success" role="alert">Käyttäjä lisätty!!</div>';
         }catch(Exception $e){
             echo '<div class="alert alert-danger" role="alert">'.$e->getMessage().'</div>';
