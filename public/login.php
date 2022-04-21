@@ -11,7 +11,7 @@
         login($uname, $pw);
         header("HTTP/1.1 200 OK");
         echo "You've logged in!";
-        $_SESSION["kayttajanimi"] = $uname;
+        $_SESSION["username"] = $uname;
         exit;
         // header("Location: index.php");
         // exit;
