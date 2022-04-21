@@ -9,7 +9,7 @@ create table kayttaja (
     etunimi varchar(50) not null,
     sukunimi varchar(50) not null,
     kayttajanimi varchar(50) UNIQUE,
-    salasana varchar(50)
+    salasana varchar(150)
 );
 
 create table pk_merkinta (

@@ -32,9 +32,9 @@ function login($uname, $pw) {
         $row = $statement->fetch();
 
         //Tarkistetaan käyttäjän antama salasana tietokannan salasanaa vastaan
-        // if (!password_verify($pw, $row["salasana"])) {
-        //     throw new Exception("Wrong password!");
-        // }
+        if (!password_verify($pw, $row["salasana"])) {
+            throw new Exception("Wrong password!");
+        }
 
         //Jos käyttäjä tunnistettu, tallennetaan käyttäjän tiedot sessioon
         $_SESSION["username"] = $uname;
