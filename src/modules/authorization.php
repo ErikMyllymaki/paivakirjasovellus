@@ -37,7 +37,7 @@ function login($uname, $pw) {
         }
 
         //Jos käyttäjä tunnistettu, tallennetaan käyttäjän tiedot sessioon
-        $_SESSION["uname"] = $uname;
+        $_SESSION["username"] = $uname;
         $_SESSION["fname"] = $row["etunimi"];
         $_SESSION["lname"] = $row["sukunimi"];
 
