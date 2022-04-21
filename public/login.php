@@ -1,28 +1,23 @@
 <?php
-    // include TEMPLATES_DIR."header.php";
-
-    session_start();
-    include MODULES_DIR . 'authorization.php';
+    include TEMPLATES_DIR."header.php";
+    include MODULES_DIR.'authorization.php';
 
     $uname = filter_input(INPUT_POST, "username");
     $pw = filter_input(INPUT_POST, "password");
+    
+    if(!isset($_SESSION["username"]) && isset($uname)){
+    
+        try {
+            login($uname, $pw);
+            header("Location: index.php");
+            exit;
+        } catch (Exception $e) {
+            echo '<div class="alert alert-danger" role="alert">'.$e->getMessage().'</div>';
+        }
+       
+    }
 
-    try {
-        login($uname, $pw);
-        header("HTTP/1.1 200 OK");
-        echo "You've logged in!";
-        $_SESSION["username"] = $uname;
-        exit;
-        // header("Location: index.php");
-        // exit;
-    } catch(Exception $e) {
-        header("HTTP/1.1 401 Unauthorized");
-        $error_json = new stdClass();
-        $error_json->errorMsg = $e->getMessage();
-        echo json_encode($error_json);
-        exit;
-        // echo '<div class="alert alert-danger" role="alert">' . $e -> getMessage().'</div>';
-}
+    if(!isset($_SESSION["username"])){
 
 ?>
 
@@ -35,4 +30,4 @@
         <input type="submit" class="btn btn-primary" value="Kirjaudu">
     </form>
 
- <?php  // include TEMPLATES_DIR.'footer.php'; ?>
+ <?php  } include TEMPLATES_DIR.'footer.php'; ?>
