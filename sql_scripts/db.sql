@@ -32,3 +32,7 @@ create table avainsanarivi (
     foreign key (merkinta_id) references pk_merkinta(merkinta_id),
     foreign key (avainsana_id) references avainsana(avainsana_id)
 );
+
+
+insert into avainsana (nimi) VALUES ('Hauskaa');
+insert into avainsana (nimi) VALUES ('Tylsaa');
