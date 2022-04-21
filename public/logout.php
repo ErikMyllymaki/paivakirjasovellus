@@ -2,7 +2,7 @@
     include TEMPLATES_DIR.'header.php';
     include MODULES_DIR.'authorization.php';
 
-    if(isset($_SESSION["uname"])){
+    if(isset($_SESSION["username"])){
         logout();
         header("Location: logout.php");
     }else{
