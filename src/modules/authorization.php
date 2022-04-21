@@ -37,9 +37,9 @@ function login($uname, $pw) {
         }
 
         //Jos käyttäjä tunnistettu, tallennetaan käyttäjän tiedot sessioon
-        // $_SESSION["username"] = $uname;
-        // $_SESSION["fname"] = $row["firstname"];
-        // $_SESSION["lname"] = $row["lastname"];
+        $_SESSION["username"] = $uname;
+        $_SESSION["fname"] = $row["firstname"];
+        $_SESSION["lname"] = $row["lastname"];
 
     } catch (PDOException $e) {
         throw $e;
