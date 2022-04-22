@@ -3,3 +3,4 @@
     define("PUBLIC_DIR", BASE_DIR."public/");
     define("MODULES_DIR", BASE_DIR."src/modules/");
     define("TEMPLATES_DIR", BASE_DIR."src/templates/");
+    define("CSS_DIR", BASE_DIR."css/");
