@@ -1,6 +1,10 @@
 <?php
 include TEMPLATES_DIR.'header.php';
 require_once MODULES_DIR.'db.php';
+include MODULES_DIR.'diaryentry.php';
+// include MODULES_DIR.'authorization.php';
+
+
 
 // try {
 //     $pdo = getPdoConnection();
@@ -13,6 +17,12 @@ require_once MODULES_DIR.'db.php';
 // }
 
 $diary = filter_input(INPUT_POST, "diary");
+$user_id = $_SESSION["user_id"];
+
+if(isset($user_id) && isset($diary)){
+    addDiaryEntry($user_id, $diary);
+    echo '<div class="alert alert-success" role="alert">Kirjaus tehty!!</div>';
+}
 
 
 ?>

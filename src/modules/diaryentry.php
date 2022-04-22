@@ -9,10 +9,10 @@ function addDiaryEntry($kayttaja_id, $merkinta){
 
         $sql = "INSERT INTO pk_merkinta (merkinta, kayttaja_id) VALUES (?, ?)";
         $statement = $pdo->prepare($sql);
-        $statement->bindParam(1, $merkinta);
-        $statement->bindParam(2, $kayttaja_id);
-        $statement->execute();
+        $statement->execute( array($merkinta, $kayttaja_id) );
+
     } catch(PDOException $e) {
+        echo "Ei voida lisätä";
         throw $e;
     }
 }
