@@ -16,7 +16,7 @@ create table pk_merkinta (
     merkinta_id int primary key AUTO_INCREMENT,
     merkinta text not null,
     kayttaja_id int,
-    aika DATETIME,
+    aika TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     foreign key (kayttaja_id) references kayttaja(kayttaja_id)
 );
 
