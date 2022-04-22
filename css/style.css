@@ -1,0 +1,9 @@
+/* tää tiedosto ei vaikuta suoraan tyyleihin vaan pitää pastettaa style.php:seen */
+
+h1 {
+    margin: 50px 50px 50px 50px;
+}
+
+input {
+    margin: 5px;
+}
