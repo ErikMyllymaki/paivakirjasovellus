@@ -20,7 +20,7 @@ function login($uname, $pw) {
     try {
         $pdo = getPdoConnection();
         //Suoritetaan parametrien lisääminen tietokantaan.
-        $sql = "SELECT kayttajanimi, salasana, etunimi, sukunimi FROM kayttaja WHERE kayttajanimi=?";
+        $sql = "SELECT kayttaja_id, kayttajanimi, salasana, etunimi, sukunimi FROM kayttaja WHERE kayttajanimi=?";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(1, $uname);
         $statement->execute();
@@ -40,6 +40,7 @@ function login($uname, $pw) {
         $_SESSION["username"] = $uname;
         $_SESSION["fname"] = $row["etunimi"];
         $_SESSION["lname"] = $row["sukunimi"];
+        $_SESSION["user_id"] = $row["kayttaja_id"];
 
     } catch (PDOException $e) {
         throw $e;
