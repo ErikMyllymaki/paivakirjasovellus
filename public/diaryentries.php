@@ -11,7 +11,7 @@ $diaryEntries = getDiaryEntries();
 <?php
 
 foreach($diaryEntries as $diaryEntry) {
-    echo "<h2>".$diaryEntry["aika"]."</h2><h3>".$diaryentry["kayttajanimi"]."</h3><p>".$diaryEntry["merkinta"]."</p>";
+    echo "<h2>".$diaryEntry["aika"]."</h2><h3>".$diaryEntry["kayttajanimi"]."</h3><p>".$diaryEntry["merkinta"]."</p>";
 }
 
 include TEMPLATES_DIR.'footer.php';
