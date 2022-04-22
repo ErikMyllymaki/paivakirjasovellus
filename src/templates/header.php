@@ -34,6 +34,9 @@ session_start();
             <a class="nav-link" href="user.php">Rekisteröidy</a>
             </li>
             <li class="nav-item">
+            <a class="nav-link" href="diaryentries.php">Päiväkirjamerkinnät</a>
+            </li>
+            <li class="nav-item">
             <?php 
                 if(isset($_SESSION["username"])){
                     echo '<a class="nav-link bg-danger p-2" href="logout.php">Kirjaudu ulos</a>';
