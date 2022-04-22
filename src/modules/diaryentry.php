@@ -9,10 +9,10 @@ function addDiaryEntry($kayttaja_id, $merkinta){
 
         $sql = "INSERT INTO pk_merkinta (merkinta, kayttaja_id) VALUES (?, ?)";
         $statement = $pdo->prepare($sql);
-        $statement->bindParam(1, $merkinta);
-        $statement->bindParam(2, $kayttaja_id);
-        $statement->execute();
+        $statement->execute( array($merkinta, $kayttaja_id) );
+
     } catch(PDOException $e) {
+        echo "Ei voida lisätä";
         throw $e;
     }
 }
@@ -26,7 +26,7 @@ function getDiaryEntries() {
 
         $sql = "SELECT merkinta, aika, kayttajanimi 
             FROM pk_merkinta INNER JOIN kayttaja ON 
-            pk_merkinta.kayttaja_id=kayttaja.kayttaja.id
+            pk_merkinta.kayttaja_id=kayttaja.kayttaja_id
             ORDER BY kayttajanimi, aika;";
 
         $diaryentry = $pdo->query($sql);
