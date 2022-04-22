@@ -33,12 +33,17 @@ session_start();
             <li class="nav-item">
             <a class="nav-link" href="user.php">Rekisteröidy</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="diaryentries.php">Päiväkirjamerkinnät</a>
-            </li>
-            <li class="nav-item">
+
+
             <?php 
                 if(isset($_SESSION["username"])){
+                    echo '<li class="nav-item">
+                    <a class="nav-link" href="diaryentries.php">Päiväkirjamerkinnät</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="diaryentry.php">Lisää merkintä</a>
+                    </li>
+                    <li class="nav-item">';
                     echo '<a class="nav-link bg-danger p-2" href="logout.php">Kirjaudu ulos</a>';
                 }else{
                     echo '<a class="nav-link bg-success p-2" href="login.php">Kirjaudu sisään</a>';
