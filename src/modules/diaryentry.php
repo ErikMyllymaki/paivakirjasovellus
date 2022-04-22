@@ -11,6 +11,7 @@ function addDiaryEntry($kayttaja_id, $merkinta){
         $statement = $pdo->prepare($sql);
         $statement->bindParam(1, $merkinta);
         $statement->bindParam(2, $kayttaja_id);
+        $statement->execute();
     } catch(PDOException $e) {
         throw $e;
     }

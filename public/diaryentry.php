@@ -12,6 +12,8 @@ require_once MODULES_DIR.'db.php';
 //     throw $e;
 // }
 
+$diary = filter_input(INPUT_POST, "diary");
+
 
 ?>
 
