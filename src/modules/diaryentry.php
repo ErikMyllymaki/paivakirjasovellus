@@ -26,7 +26,7 @@ function getDiaryEntries() {
 
         $sql = "SELECT merkinta, aika, kayttajanimi 
             FROM pk_merkinta INNER JOIN kayttaja ON 
-            pk_merkinta.kayttaja_id=kayttaja.kayttaja.id
+            pk_merkinta.kayttaja_id=kayttaja.kayttaja_id
             ORDER BY kayttajanimi, aika;";
 
         $diaryentry = $pdo->query($sql);
