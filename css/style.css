@@ -1,4 +1,3 @@
-/* tää tiedosto ei vaikuta suoraan tyyleihin vaan pitää pastettaa style.php:seen */
 
 h1 {
     margin: 50px 50px 50px 50px;
@@ -6,4 +5,8 @@ h1 {
 
 input {
     margin: 5px;
+}
+
+body {
+    background-color: rgb(180, 207, 233);
 }
