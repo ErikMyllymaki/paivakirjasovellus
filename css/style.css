@@ -19,6 +19,11 @@ body {
     text-align: center;
 }
 
+.nav-link {
+    border-radius: 3px;
+
+}
+
 textarea {
     border: none;
     border-radius: 5px;
