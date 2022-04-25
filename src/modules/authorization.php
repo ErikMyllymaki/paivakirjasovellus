@@ -26,14 +26,14 @@ function login($uname, $pw) {
         $statement->execute();
 
         if ($statement->rowCount() <= 0) {
-            throw new Exception("Person not found! Cannot log in.");
+            throw new Exception("Käyttäjää ei löytynyt. Kirjautuminen ei onnistu.");
         }
 
         $row = $statement->fetch();
 
         //Tarkistetaan käyttäjän antama salasana tietokannan salasanaa vastaan
         if (!password_verify($pw, $row["salasana"])) {
-            throw new Exception("Wrong password!");
+            throw new Exception("Väärä salasana");
         }
 
         //Jos käyttäjä tunnistettu, tallennetaan käyttäjän tiedot sessioon
