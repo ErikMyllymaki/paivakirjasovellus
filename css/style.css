@@ -43,7 +43,12 @@ textarea::-webkit-resizer {
     border: solid 1px rgba(101, 46, 78, 0.244);
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:focus {
     background-color: rgba(147, 41, 131, 0.711);
     border: solid 1px rgba(101, 46, 78, 0.244);
+    outline: none;
+    box-shadow: none;
+    transition: none;
+    
 }
+
