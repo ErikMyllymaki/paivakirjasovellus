@@ -21,6 +21,21 @@ function addDiaryEntry($kayttaja_id, $merkinta){
     }
 }
 
+function addKeyWord($avainsana) {
+
+    try {
+
+         $pdo = getPdoConnection();
+        $sql = "INSERT INTO avainsana (nimi) VALUES (?)";
+        $statement = $pdo->prepare($sql);
+        $statement->execute(array($avainsana));
+    } catch(PDOException $e){
+        echo "Ei voida lisätä";
+        throw $e;
+    }
+
+}
+
 
 function getDiaryEntries() {
     require_once MODULES_DIR.'db.php';
