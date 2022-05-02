@@ -36,3 +36,36 @@ function getDiaryEntries() {
         throw $e;
     }
 }
+
+function deleteDiaryEntry($id){
+
+    require_once MODULES_DIR.'db.php'; 
+
+    //Tarkistetaan onko muttujia asetettu
+    if (!isset($id)) {
+        throw new Exception("Missing parameters! Cannot delete a diary entry!");
+    }
+
+    try {
+        $pdo = getPdoConnection();
+        // start transaction 
+        $pdo->beginTransaction();
+
+        // Delete from pk_merkinta table
+        $sql = "DELETE FROM pk_merkinta WHERE merkinta_id = ?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(1, $id);
+        $statement->execute();
+        // Delete from avainsanarivi table
+        $sql = "DELETE FROM avainsanarivi WHERE merkinta_id = ?";
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(1, $id);
+        $statement->execute();
+        // commit transaction
+        $pdo->commit();
+    } catch (PDOException $e) {
+        //Rollback transaction on error
+        $pdo->rollBack();
+        throw $e;
+    }
+}
