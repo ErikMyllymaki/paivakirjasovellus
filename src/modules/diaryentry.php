@@ -1,16 +1,35 @@
 <?php
 
 
-function addDiaryEntry($kayttaja_id, $merkinta){
+function addDiaryEntry($kayttaja_id, $merkinta, array $avainsanat){
     require_once MODULES_DIR.'db.php';
+
+    function executeInsert (object $db, string $sql): int {
+        $query = $db->query($sql);
+        return $db->lastInsertId();
+    }
 
     try {
         $pdo = getPdoConnection();
         $pdo -> beginTransaction();
 
-        $sql = "INSERT INTO pk_merkinta (merkinta, kayttaja_id) VALUES (?, ?)";
-        $statement = $pdo->prepare($sql);
-        $statement->execute( array($merkinta, $kayttaja_id) );
+        $sql = "INSERT INTO pk_merkinta (merkinta, kayttaja_id) VALUES ($merkinta, $kayttaja_id)";
+        // $statement = $pdo->prepare($sql);
+        // $statement->execute( array($merkinta, $kayttaja_id) );
+
+        $merkinta_id = executeInsert($pdo, $sql);
+
+        // $sql = "INSERT INTO 'avainsanarivi' (merkinta_id) values ($merkinta_id)";
+        // $avainsana_id = executeInsert($pdo, $sql);
+
+        foreach ($avainsanat as $avainsana) {
+            $sql = "INSERT INTO avainsanarivi (merkinta_id, avainsana_id) values ("
+            .
+                $merkinta_id. "," .
+                $avainsana
+            .")";
+            executeInsert($pdo,$sql);
+        }
 
         $pdo->commit();
 

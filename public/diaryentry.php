@@ -17,11 +17,25 @@ include MODULES_DIR.'diaryentry.php';
 // }
 
 $diary = filter_input(INPUT_POST, "diary");
-$user_id = $_SESSION["user_id"];
 
-if(isset($user_id) && isset($diary)){
-    addDiaryEntry($user_id, $diary);
-    echo '<div class="alert alert-success" role="alert">Kirjaus tehty!!</div>';
+$user_id = $_SESSION["user_id"];
+// if(!empty($_POST['check'])) {
+//     foreach($_POST['check'] as $check) {
+//             echo $check;
+//     }
+// }
+
+
+if(isset($user_id) && isset($diary) && !empty($_POST['check'])){
+
+    foreach($_POST['check'] as $check) {
+        addDiaryEntry($user_id, $diary, $check);
+        echo '<div class="alert alert-success" role="alert">Kirjaus tehty!!</div>';
+
+
+}
+    // addDiaryEntry($user_id, $diary);
+    // echo '<div class="alert alert-success" role="alert">Kirjaus tehty!!</div>';
 }
 
 
@@ -31,11 +45,11 @@ if(isset($user_id) && isset($diary)){
         <h3>Kirjoita merkintä</h3>
         <textarea id="diary" name="diary"></textarea><br/>
         <h4>Valitse avainsanat</h4>
-        <input type="checkbox" id="fun" name="check"
-         checked>
+        <input type="checkbox" id="fun" name="check[]" value="Hauskaa"
+         >
          <label for="fun">Hauskaa</label>
-         <input type="checkbox" id="boring" name="check"
-         checked>
+         <input type="checkbox" id="boring" name="check[]" value="Tylsaa"
+         >
          <label for="boring">Tylsää</label><br/>
          
             <!-- foreach ($avainsanat as $avainsana){
@@ -48,4 +62,6 @@ if(isset($user_id) && isset($diary)){
 
 
 
-<?php include TEMPLATES_DIR.'footer.php'; ?>
+<?php 
+
+include TEMPLATES_DIR.'footer.php'; ?>
