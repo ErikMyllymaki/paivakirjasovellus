@@ -20,9 +20,8 @@ $diary = filter_input(INPUT_POST, "diary");
 $keyword = filter_input(INPUT_POST, "avainsana");
 $user_id = $_SESSION["user_id"];
 
-if(isset($user_id) && isset($diary)){
-    addDiaryEntry($user_id, $diary);
-    addKeyWord($keyword);
+if(isset($user_id) && isset($diary) && isset($keyword)){
+    addDiaryEntry($user_id, $diary, $keyword);
     echo '<div class="alert alert-success" role="alert">Kirjaus tehty!!</div>';
 }
 
