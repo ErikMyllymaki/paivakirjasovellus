@@ -30,13 +30,9 @@ if(isset($user_id) && isset($diary)){
     <form action="diaryentry.php" method="post">
         <h3>Kirjoita merkintä</h3>
         <textarea id="diary" name="diary"></textarea><br/>
-        <h4>Valitse avainsanat</h4>
-        <input type="checkbox" id="fun" name="check"
-         checked>
-         <label for="fun">Hauskaa</label>
-         <input type="checkbox" id="boring" name="check"
-         checked>
-         <label for="boring">Tylsää</label><br/>
+        <h4>Syötä avainsana</h4>
+        <input type="" id="avainsana" name="avainsana" placeholder="Avainsana">
+        <br>
          
             <!-- foreach ($avainsanat as $avainsana){
                 echo '<label for="fun">' . $avainsana . '</label>
