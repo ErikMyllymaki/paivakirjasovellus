@@ -17,10 +17,11 @@ include MODULES_DIR.'diaryentry.php';
 // }
 
 $diary = filter_input(INPUT_POST, "diary");
+$keyword = filter_input(INPUT_POST, "avainsana");
 $user_id = $_SESSION["user_id"];
 
-if(isset($user_id) && isset($diary)){
-    addDiaryEntry($user_id, $diary);
+if(isset($user_id) && isset($diary) && isset($keyword)){
+    addDiaryEntry($user_id, $diary, $keyword);
     echo '<div class="alert alert-success" role="alert">Kirjaus tehty!!</div>';
 }
 
@@ -31,16 +32,7 @@ if(isset($user_id) && isset($diary)){
         <h3>Kirjoita merkintä</h3>
         <textarea id="diary" name="diary"></textarea><br/>
         <h4>Syötä avainsana</h4>
-
-        <input type="radio" id="avainsana1" name="avainsanat" value="avainsana1">
-        <label for="avainsana1">pöö</label>
-
-        <input type="radio" id="avainsana2" name="avainsanat" value="avainsana2">
-        <label for="avainsana2">jee</label>
-
-        <input type="radio" id="avainsana3" name="avainsanat" value="avainsana3">
-        <label for="avainsana3">:D</label>
-        
+        <input type="text" id="avainsana" name="avainsana" placeholder="Avainsana">
         <br>
          
             <!-- foreach ($avainsanat as $avainsana){
