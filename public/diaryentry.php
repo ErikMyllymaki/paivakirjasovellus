@@ -31,7 +31,16 @@ if(isset($user_id) && isset($diary)){
         <h3>Kirjoita merkintä</h3>
         <textarea id="diary" name="diary"></textarea><br/>
         <h4>Syötä avainsana</h4>
-        <input type="" id="avainsana" name="avainsana" placeholder="Avainsana">
+
+        <input type="radio" id="avainsana1" name="avainsanat" value="avainsana1">
+        <label for="avainsana1">pöö</label>
+
+        <input type="radio" id="avainsana2" name="avainsanat" value="avainsana2">
+        <label for="avainsana2">jee</label>
+
+        <input type="radio" id="avainsana3" name="avainsanat" value="avainsana3">
+        <label for="avainsana3">:D</label>
+        
         <br>
          
             <!-- foreach ($avainsanat as $avainsana){
