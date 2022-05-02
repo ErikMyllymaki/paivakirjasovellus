@@ -14,14 +14,14 @@ create table kayttaja (
 
 create table avainsana (
     avainsana_id int primary key AUTO_INCREMENT,
-    nimi varchar(50) not null
+    avainsana_nimi varchar(50) not null
 );
 
 create table pk_merkinta (
     merkinta_id int primary key AUTO_INCREMENT,
     merkinta text not null,
     kayttaja_id int,
-    avainsana_id int,
+    avainsana_nimi int,
     aika TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     foreign key (kayttaja_id) references kayttaja(kayttaja_id),
     foreign key (avainsana_id) references avainsana(avainsana_id)
