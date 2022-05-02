@@ -6,12 +6,14 @@ function addDiaryEntry($kayttaja_id, $merkinta){
 
     try {
         $pdo = getPdoConnection();
+        $pdo -> beginTransaction();
 
         $sql = "INSERT INTO pk_merkinta (merkinta, kayttaja_id) VALUES (?, ?)";
         $statement = $pdo->prepare($sql);
         $statement->execute( array($merkinta, $kayttaja_id) );
 
     } catch(PDOException $e) {
+        $pdo->rollback();
         echo "Ei voida lisätä";
         throw $e;
     }
