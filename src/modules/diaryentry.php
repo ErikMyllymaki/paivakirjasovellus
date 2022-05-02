@@ -12,11 +12,6 @@ function addDiaryEntry($kayttaja_id, $merkinta){
         $statement = $pdo->prepare($sql);
         $statement->execute( array($merkinta, $kayttaja_id) );
 
-        /*$sql = "INSERT INTO avainsanarivi WHERE merkinta_id = ?";
-        $statement = $pdo->prepare($sql);
-        $statement->bindParam(1, $id);
-        $statement->execute();*/
-
         $pdo->commit();
 
     } catch(PDOException $e) {
@@ -33,11 +28,9 @@ function getDiaryEntries() {
     try {
         $pdo = getPdoConnection();
 
-        $sql = "SELECT merkinta, aika, kayttajanimi, avainsanarivi.merkinta_id, avainsanarivi.avainsana_id, nimi
-                FROM avainsana INNER JOIN avainsanarivi ON 
-                avainsana.avainsana_id=avainsanarivi.avainsana_id
-                INNER JOIN pk_merkinta ON
-                avainsanarivi.merkinta_id=pk_merkinta.merkinta_id
+        $sql = "SELECT merkinta, aika, kayttajanimi, merkinta_id, pk_merkinta.avainsana_id, nimi
+                FROM avainsana INNER JOIN pk_merkinta ON 
+                avainsana.avainsana_id=pk_merkinta.avainsana_id
                 INNER JOIN kayttaja ON 
                 pk_merkinta.kayttaja_id=kayttaja.kayttaja_id
                 ORDER BY kayttajanimi, aika;";

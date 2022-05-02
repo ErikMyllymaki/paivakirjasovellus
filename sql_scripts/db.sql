@@ -12,24 +12,18 @@ create table kayttaja (
     salasana varchar(150)
 );
 
-create table pk_merkinta (
-    merkinta_id int primary key AUTO_INCREMENT,
-    merkinta text not null,
-    kayttaja_id int,
-    aika TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    foreign key (kayttaja_id) references kayttaja(kayttaja_id)
-);
-
 create table avainsana (
     avainsana_id int primary key AUTO_INCREMENT,
     nimi varchar(50) not null
 );
 
-create table avainsanarivi (
-    rivinro int primary key AUTO_INCREMENT,
-    merkinta_id int,
+create table pk_merkinta (
+    merkinta_id int primary key AUTO_INCREMENT,
+    merkinta text not null,
+    kayttaja_id int,
     avainsana_id int,
-    foreign key (merkinta_id) references pk_merkinta(merkinta_id),
+    aika TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    foreign key (kayttaja_id) references kayttaja(kayttaja_id),
     foreign key (avainsana_id) references avainsana(avainsana_id)
 );
 
