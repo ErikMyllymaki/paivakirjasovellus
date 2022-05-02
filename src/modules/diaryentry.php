@@ -12,6 +12,8 @@ function addDiaryEntry($kayttaja_id, $merkinta){
         $statement = $pdo->prepare($sql);
         $statement->execute( array($merkinta, $kayttaja_id) );
 
+        $pdo->commit();
+
     } catch(PDOException $e) {
         $pdo->rollback();
         echo "Ei voida lisätä";
