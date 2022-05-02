@@ -17,13 +17,18 @@ include MODULES_DIR.'diaryentry.php';
 // }
 
 $diary = filter_input(INPUT_POST, "diary");
-$keyword = filter_input(INPUT_POST, "avainsana");
+$keywords = getKeyWords();
 $user_id = $_SESSION["user_id"];
 
-if(isset($user_id) && isset($diary) && isset($keyword)){
-    addDiaryEntry($user_id, $diary, $keyword);
-    echo '<div class="alert alert-success" role="alert">Kirjaus tehty!!</div>';
+try {
+    if(isset($user_id) && isset($diary) && !empty($_POST['check'])){
+        addDiaryEntry($user_id, $diary, $_POST['check']);
+        echo '<div class="alert alert-success" role="alert">Kirjaus tehty!!</div>';
+    }
+} catch (Exception $e) {
+    throw $e;
 }
+
 
 
 ?>
@@ -31,14 +36,13 @@ if(isset($user_id) && isset($diary) && isset($keyword)){
     <form action="diaryentry.php" method="post">
         <h3>Kirjoita merkintä</h3>
         <textarea id="diary" name="diary"></textarea><br/>
-        <h4>Syötä avainsana</h4>
-        <input type="text" id="avainsana" name="avainsana" placeholder="Avainsana">
-        <br>
-         
-            <!-- foreach ($avainsanat as $avainsana){
-                echo '<label for="fun">' . $avainsana . '</label>
-                <input type="checkbox" name="checkbox"';
-            } -->
+
+        <?php
+            foreach($keywords as $keyword) {
+                echo '<input type="checkbox" name="check[]" value="'.$keyword['avainsana_id'].'">
+                <label for "'.$keyword['nimi'].'">'. $keyword['nimi'] .'</label>';
+            }
+        ?>
         
         <input type="submit" class="btn btn-primary" value="Lisää merkintä">
     </form>

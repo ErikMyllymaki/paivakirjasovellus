@@ -6,25 +6,42 @@
         return $pdo->lastInsertId();
     }
 
-function addDiaryEntry($kayttaja_id, $merkinta, $avainsana){
+
+    function getKeyWords() {
+
+        try {
+            require_once MODULES_DIR.'db.php';
+            $pdo = getPdoConnection();
+            $sql = "select * from avainsana";
+            $diaryentry = $pdo->query($sql);
+            return $diaryentry->fetchAll();
+        } catch (Exception $e) {
+            throw $e;
+        }
+    
+    }
+
+function addDiaryEntry($kayttaja_id, $merkinta, $avainsanat){
     
     require_once MODULES_DIR.'db.php';
 
     try {
 
   
-
         $pdo = getPdoConnection();
         $pdo -> beginTransaction();
 
-        $sql = "INSERT INTO avainsana (nimi) VALUES ('$avainsana')";
-
-        $avainsana_id = executeInsert($pdo, $sql);
-
-        $sql = "INSERT INTO pk_merkinta (merkinta, kayttaja_id, avainsana_id) VALUES (?, ?, ?)";
-        $statement = $pdo->prepare($sql);
-        $statement->execute( array($merkinta, $kayttaja_id, $avainsana_id) );
-
+        $sql = "INSERT INTO pk_merkinta (merkinta, kayttaja_id) VALUES ('$merkinta', $kayttaja_id)";
+        $merkinta_id = executeInsert($pdo, $sql);
+        foreach($avainsanat as $avainsana){
+            
+            $sql = "INSERT INTO avainsanarivi (merkinta_id, avainsana_id) values ("
+            .
+                $merkinta_id. "," .
+                $avainsana
+            . ")";            
+            executeInsert($pdo,$sql);
+        }
         $pdo->commit();
 
     } catch(PDOException $e) {
@@ -34,20 +51,21 @@ function addDiaryEntry($kayttaja_id, $merkinta, $avainsana){
     }
 }
 
-function addKeyWord($avainsana) {
+// function addKeyWord($avainsana) {
 
-    try {
+//     try {
 
-         $pdo = getPdoConnection();
-        $sql = "INSERT INTO avainsana (nimi) VALUES (?)";
-        $statement = $pdo->prepare($sql);
-        $statement->execute(array($avainsana));
-    } catch(PDOException $e){
-        echo "Ei voida lisätä";
-        throw $e;
-    }
+//          $pdo = getPdoConnection();
+//         $sql = "INSERT INTO avainsana (nimi) VALUES (?)";
+//         $statement = $pdo->prepare($sql);
+//         $statement->execute(array($avainsana));
+//     } catch(PDOException $e){
+//         echo "Ei voida lisätä";
+//         throw $e;
+//     }
 
-}
+// }
+
 
 
 function getDiaryEntries() {

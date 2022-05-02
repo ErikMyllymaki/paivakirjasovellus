@@ -38,6 +38,9 @@ session_start();
                     <a class="nav-link" href="diaryentries.php">Päiväkirjamerkinnät</a>
                     </li>
                     <li class="nav-item">
+                    <a class="nav-link" href="keyword.php">Lisää avainsanoja</a>
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link" href="diaryentry.php">Lisää merkintä</a>
                     </li>
                     <li class="nav-item">';
