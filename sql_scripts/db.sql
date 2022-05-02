@@ -33,3 +33,6 @@ create table avainsanarivi (
     FOREIGN key (merkinta_id) REFERENCES pk_merkinta(merkinta_id),
     FOREIGN key (avainsana_id) REFERENCES avainsana(avainsana_id)
 );
+
+insert into avainsana(avainsana_id, nimi) values (1, 'Tylsää');
+insert into avainsana(avainsana_id, nimi) values (2, 'Hauskaa');
