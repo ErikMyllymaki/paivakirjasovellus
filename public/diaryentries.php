@@ -6,14 +6,14 @@ include MODULES_DIR."diaryentries.php";
 
 $id = filter_input(INPUT_GET, "id");
 
-// if(isset($id)){
-//     try {
-//         deleteDiaryEntry($id);
-//         echo '<div class="alert alert-success" role="alert">Merkintä poistettu!!</div>';
-//     } catch (Exception $e) {
-//         throw $e;
-//     }
-// }
+if(isset($id)){
+    try {
+        deleteDiaryEntry($id);
+        echo '<div class="alert alert-success" role="alert">Merkintä poistettu!!</div>';
+    } catch (Exception $e) {
+        throw $e;
+    }
+}
 
 ?>
 
@@ -53,7 +53,7 @@ try {
         if(!empty($_POST['check'])) {
             $diaryEntries = getDiaryEntries($_POST['check'], $userid);
             foreach($diaryEntries as $diaryEntry) {
-                echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p><p class='pkavainsana'>".' #'.$diaryEntry['nimi']  ."</p></div><br></br>";
+                echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p><p class='pkavainsana'>".' #'.$diaryEntry['nimi']  ."</p><a href=diaryentries.php?id=" . $diaryEntry["merkinta_id"] . " class='btn btn-primary'>Poista</a></div><br></br>";
             }
         } else {
             echo '<div class="alert alert-danger" role="alert">Hae jollain avainsanalla!</div>';
