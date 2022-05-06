@@ -18,7 +18,7 @@ try {
 ?>
 
 
-<form action="keyword.php" method="post">
+<form action="keyword.php" method="post" id="box">
     <h2>Lisää avainsana</h2>
     <input type="text" id="keyword" name="keyword">
     <input type="submit" class="btn btn-primary" value="Lisää avainsana">
