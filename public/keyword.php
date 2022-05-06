@@ -8,7 +8,7 @@ $keyword = filter_input(INPUT_POST, "keyword");
 try {
     if(isset($keyword)){
     addKeyWord($keyword);
-    echo '<div class="alert alert-success" role="alert">Avainsana lisätty!!</div>';
+    echo '<div class="alert alert-success" role="alert">Avainsana lisätty onnistuneesti!</div>';
     }
 } catch (Exception $e) {
     throw $e;
