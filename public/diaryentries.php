@@ -53,10 +53,15 @@ try {
             $ids = implode(', ', $_POST['check']);
             $diaryEntries = getDiaryEntries($ids, $userid);
 
-            foreach($diaryEntries as $diaryEntry) {
+            if ($diaryEntries) {
+                foreach($diaryEntries as $diaryEntry) {
                 echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p>". "<a href=diaryentries.php?id=" . $diaryEntry["merkinta_id"] . " class='btn btn-primary'>Poista</a></div><br></br>";
                 // <p class='pkavainsana'>".'#'.$diaryEntry['nimi']  .;
+                }
+            } else {
+                echo '<div class="alert alert-danger" role="alert">Ei merkintöjä valitulla hakusanalla!</div>';
             }
+            
             
         } else {
             echo '<h2>Aseta avainsanat ja hae!</h2>';
