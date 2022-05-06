@@ -115,3 +115,16 @@ textarea::-webkit-resizer {
 .haeAvainsanat {
     margin-bottom: 20px;
 }
+
+
+@media screen and (max-width: 520px) {
+    textarea {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .paivakirjamerkinta{
+        width: 95%;
+    }
+}
