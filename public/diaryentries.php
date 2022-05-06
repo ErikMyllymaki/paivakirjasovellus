@@ -32,12 +32,12 @@ echo '<h2 class="valitseAvainsanat">Valitse avainsanat:</h2>';
 
 <form method="post" action="diaryentries.php">
 <?php
-// echo '<input type="radio" checked name="check" value="'.$keywords[0]['avainsana_id'].'">
-// <label for "'.$keywords[0]['nimi'].'">'. $keywords[0]['nimi'] .'</label>';
 for($x = 0; $x < sizeof($keywords); $x++) {
-    echo '<input type="radio" name="check" class="radiobuttons" id="" value="'.$keywords[$x]['avainsana_id'].'">
+    echo '<input type="checkbox" name="check[]" class="radiobuttons" id="" value="'.$keywords[$x]['avainsana_id'].'">
     <label for "'.$keywords[$x]['nimi'].'">'. $keywords[$x]['nimi'] .'</label>';
 } 
+
+
 
 
 
@@ -49,24 +49,23 @@ for($x = 0; $x < sizeof($keywords); $x++) {
 
 <?php
 try {
-       if(isset($_POST['submit'])) {
         if(!empty($_POST['check'])) {
-            $diaryEntries = getDiaryEntries($_POST['check'], $userid);
+            $ids = implode(', ', $_POST['check']);
+            $diaryEntries = getDiaryEntries($ids, $userid);
+
             foreach($diaryEntries as $diaryEntry) {
-                echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p><p class='pkavainsana'>".' #'.$diaryEntry['nimi']  ."</p></div><br></br>";
+                echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p>"."</p></div><br></br>";
+                // <p class='pkavainsana'>".'#'.$diaryEntry['nimi']  .;
             }
         } else {
-            echo '<div class="alert alert-danger" role="alert">Hae jollain avainsanalla!</div>';
+            echo '<h2>Aseta avainsanat ja hae!</h2>';
         }
+    
 
-} 
 } catch (Exception $e) {
     throw $e;
 }
 
-// foreach($diaryEntries as $diaryEntry) {
-//     echo "<h2>".$diaryEntry["merkinta"]."</h2><h3>".$diaryEntry["merkinta_id"]."</h3><p>".$diaryEntry["merkinta"].'<a href="diaryentries.php?id=' . $diaryEntry["merkinta_id"] . '" class="btn btn-primary">Poista</a> </li>'. "</p>" . $diaryEntry["nimi"] . "<br></br>" ;/* mapataanko kaikki avainsananimet yhteen kirjaukseen? */
-// }
 
 ?>
 

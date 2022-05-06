@@ -1,7 +1,7 @@
 
 <?php
 
-function getDiaryEntries($id, $userid) {
+function getDiaryEntries($ids, $userid) {
     require_once MODULES_DIR.'db.php';
 
     try {
@@ -14,7 +14,8 @@ function getDiaryEntries($id, $userid) {
             INNER JOIN kayttaja ON 
             pk_merkinta.kayttaja_id=kayttaja.kayttaja_id
             WHERE (pk_merkinta.merkinta_id = avainsanarivi.merkinta_id) AND kayttaja.kayttaja_id = $userid
-            AND avainsanarivi.avainsana_id = $id");
+            AND avainsanarivi.avainsana_id IN ($ids)
+            GROUP BY merkinta");
 
         $diaryentries = $pdo->query($sql);
 
