@@ -54,7 +54,7 @@ try {
             $diaryEntries = getDiaryEntries($ids, $userid);
 
             foreach($diaryEntries as $diaryEntry) {
-                echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p>"."</p></div><br></br>";
+                echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p>". "<a href=diaryentries.php?id=" . $diaryEntry["merkinta_id"] . " class='btn btn-primary'>Poista</a></div><br></br>";
                 // <p class='pkavainsana'>".'#'.$diaryEntry['nimi']  .;
             }
             
