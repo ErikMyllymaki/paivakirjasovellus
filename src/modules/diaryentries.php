@@ -13,7 +13,7 @@ function getDiaryEntries($id) {
 
         $diaryentries = $pdo->query($sql);
 
-        return $diaryentries->fetchAll();
+        $diaryentries->fetchAll();
 
     } catch(PDOException $e) {
         throw $e;
