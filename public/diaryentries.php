@@ -50,12 +50,13 @@ for($x = 0; $x < sizeof($keywords); $x++) {
 <?php
 try {
        if(isset($_POST['submit'])) {
-        if(!empty($_POST['check']))
-        $diaryEntries = getDiaryEntries($_POST['check']);
-   
-    foreach($diaryEntries as $diaryEntry) {
-        echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p><p class='pkavainsana'>".' #'.$diaryEntry['nimi']  ."</p></div><br></br>";
-    }
+        if(!empty($_POST['check'])) {
+            $diaryEntries = getDiaryEntries($_POST['check']);
+            foreach($diaryEntries as $diaryEntry) {
+                echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p><p class='pkavainsana'>".' #'.$diaryEntry['nimi']  ."</p></div><br></br>";
+            }
+        }
+
 }
 } catch (Exception $e) {
     echo 'Hae jollain avainsanalla!';
