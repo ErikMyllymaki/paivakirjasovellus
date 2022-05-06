@@ -11,7 +11,7 @@
     if(isset($fname)){
         try{
             addUser($fname, $lname, $uname, $pw);
-            echo '<div class="alert alert-success" role="alert">Käyttäjä lisätty!!</div>';
+            echo '<div class="alert alert-success" role="alert">Käyttäjä lisätty! Voit nyt kirjautua sisään.</div>';
         }catch(Exception $e){
             echo '<div class="alert alert-danger" role="alert">'.$e->getMessage().'</div>';
         }
