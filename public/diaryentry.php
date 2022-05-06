@@ -40,11 +40,11 @@ try {
 
         <?php
             foreach($keywords as $keyword) {
-                echo '<input type="checkbox" name="check[]" value="'.$keyword['avainsana_id'].'">
-                <label for "'.$keyword['nimi'].'">'. $keyword['nimi'] .'</label>';
+                echo '<input type="checkbox" name="check[]" value="'.$keyword['avainsana_id'].'"><label for "'.$keyword['nimi'].'">'. $keyword['nimi'] .'</label> ';
             }
         ?>
         <div>
+            <br>
             <input type="submit" class="btn btn-primary" value="Lisää merkintä"> 
         </div>
        
