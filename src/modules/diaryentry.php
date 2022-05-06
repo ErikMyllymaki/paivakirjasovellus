@@ -21,6 +21,26 @@
     
     }
 
+    function mapKeyWords($id) {
+
+        try {
+            require_once MODULES_DIR.'db.php';
+            $pdo = getPdoConnection();
+            $sql = "select nimi, avainsanarivi.avainsana_id
+                FROM avainsana INNER JOIN avainsanarivi ON avainsana.avainsana_id=avainsanarivi.avainsana_id
+                INNER JOIN pk_merkinta ON 
+                avainsanarivi.merkinta_id=pk_merkinta.merkinta_id
+                INNER JOIN kayttaja ON 
+                pk_merkinta.kayttaja_id=kayttaja.kayttaja_id
+                WHERE pk_merkinta.merkinta_id = $id;";
+            $entrykeywords = $pdo->query($sql);
+            return $entrykeywords->fetchAll();
+        } catch (Exception $e) {
+            throw $e;
+        }
+    
+    }
+
 function addDiaryEntry($kayttaja_id, $merkinta, $avainsanat){
     
     require_once MODULES_DIR.'db.php';

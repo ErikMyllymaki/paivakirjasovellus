@@ -28,6 +28,8 @@ $userid = $_SESSION["user_id"];
 $keywords = getKeyWords();
 echo '<h2 class="valitseAvainsanat">Valitse avainsanat:</h2>';
 
+
+
 ?>
 
 <form method="post" action="diaryentries.php">
@@ -55,7 +57,15 @@ try {
 
             if ($diaryEntries) {
                 foreach($diaryEntries as $diaryEntry) {
-                echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p>". "<a href=diaryentries.php?id=" . $diaryEntry["merkinta_id"] . " class='btn btn-primary'>Poista</a></div><br></br>";
+                    echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"];
+
+                    $mapkeywords = mapKeyWords($diaryEntry["merkinta_id"]);
+
+                    foreach($mapkeywords as $keyword) {
+                        echo "<p>#" . $keyword["nimi"] . "</p>";
+                    }
+
+                    echo "</p><a href=diaryentries.php?id=" . $diaryEntry["merkinta_id"] . " class='btn btn-primary'>Poista</a></div><br></br>";
                 // <p class='pkavainsana'>".'#'.$diaryEntry['nimi']  .;
                 }
             } else {

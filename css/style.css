@@ -25,11 +25,15 @@ body {
 }
 
 #box {
-    margin: 100px 500px;
-    padding: 20px;
+    width: 500px;
+    height: auto;
+    margin: auto;
+    margin-top: 100px;
+    padding: 30px;
     padding-bottom: 60px;
     border-radius: 5px;
-    background-color: #e5d0e9;
+    background: #efe8f1;
+    box-shadow: 0 2px 20px rgba(104, 29, 82, 0.316);
 }
 
 p {
@@ -55,7 +59,7 @@ h3 {
 textarea {
     border: none;
     border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(104, 29, 82, 0.316);
+    box-shadow: 0 5px 20px rgba(104, 29, 82, 0.155);
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -100,7 +104,7 @@ textarea::-webkit-resizer {
     width: 400px;
     margin: auto;
     padding: 20px;
-    box-shadow: 0 5px 10px rgba(104, 29, 82, 0.316);
+    box-shadow: 0 5px 20px rgba(104, 29, 82, 0.155);
 }
 
 .valitseAvainsanat {
