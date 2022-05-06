@@ -56,7 +56,7 @@ try {
                 echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p><p class='pkavainsana'>".' #'.$diaryEntry['nimi']  ."</p></div><br></br>";
             }
         } else {
-            echo 'Hae jollain avainsanalla! Valitse jokin avainsana';
+            echo '<div class="alert alert-danger" role="alert">Hae jollain avainsanalla!</div>';
         }
 
 } 
