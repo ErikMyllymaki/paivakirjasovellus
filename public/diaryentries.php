@@ -55,11 +55,13 @@ try {
             foreach($diaryEntries as $diaryEntry) {
                 echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p><p class='pkavainsana'>".' #'.$diaryEntry['nimi']  ."</p></div><br></br>";
             }
+        } else {
+            echo 'Hae jollain avainsanalla! Valitse jokin avainsana';
         }
 
-}
+} 
 } catch (Exception $e) {
-    echo 'Hae jollain avainsanalla!';
+    throw $e;
 }
 
 // foreach($diaryEntries as $diaryEntry) {
