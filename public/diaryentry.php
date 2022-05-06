@@ -21,8 +21,9 @@ $keywords = getKeyWords();
 $user_id = $_SESSION["user_id"];
 
 try {
-    if(isset($user_id) && isset($diary) && !empty($_POST['check'])){
+    if(isset($user_id) && isset($diary) && isset($_POST['check'])){
         addDiaryEntry($user_id, $diary, $_POST['check']);
+        $ids = implode(', ', $_POST['check']);
         echo '<div class="alert alert-success" role="alert">Kirjaus tehty!!</div>';
     }
 } catch (Exception $e) {
