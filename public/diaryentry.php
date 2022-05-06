@@ -43,8 +43,10 @@ try {
                 <label for "'.$keyword['nimi'].'">'. $keyword['nimi'] .'</label>';
             }
         ?>
-        
-        <input type="submit" class="btn btn-primary" value="Lisää merkintä">
+        <div>
+            <input type="submit" class="btn btn-primary" value="Lisää merkintä"> 
+        </div>
+       
     </form>
 
 
