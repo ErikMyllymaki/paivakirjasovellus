@@ -51,40 +51,6 @@ function addDiaryEntry($kayttaja_id, $merkinta, $avainsanat){
     }
 }
 
-// function addKeyWord($avainsana) {
-
-//     try {
-
-//          $pdo = getPdoConnection();
-//         $sql = "INSERT INTO avainsana (nimi) VALUES (?)";
-//         $statement = $pdo->prepare($sql);
-//         $statement->execute(array($avainsana));
-//     } catch(PDOException $e){
-//         echo "Ei voida lisätä";
-//         throw $e;
-//     }
-
-// }
-
-
-
-// function getDiaryEntries() {
-//     require_once MODULES_DIR.'db.php';
-
-//     try {
-//         $pdo = getPdoConnection();
-
-//         $sql = "SELECT pk_merkinta.merkinta_id, merkinta from pk_merkinta, avainsanarivi
-//         where (pk_merkinta.merkinta_id = avainsanarivi.merkinta_id)
-//         and avainsanarivi.avainsana_id in (1)";
-
-//         $diaryentry = $pdo->query($sql);
-
-//         return $diaryentry->fetchAll();
-//     } catch(PDOException $e) {
-//         throw $e;
-//     }
-// }
 
 function deleteDiaryEntry($id){
 
