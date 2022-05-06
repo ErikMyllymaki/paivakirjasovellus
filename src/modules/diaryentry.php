@@ -68,7 +68,7 @@ function addDiaryEntry($kayttaja_id, $merkinta, $avainsanat){
 
 
 
-function getDiaryEntries() {
+function getDiaryEntries($userid) {
     require_once MODULES_DIR.'db.php';
 
     try {
@@ -80,7 +80,7 @@ function getDiaryEntries() {
                 avainsanarivi.merkinta_id=pk_merkinta.merkinta_id
                 INNER JOIN kayttaja ON 
                 pk_merkinta.kayttaja_id=kayttaja.kayttaja_id
-                /* where? */
+                WHERE kayttaja.kayttaja_id = $userid
                 ORDER BY kayttajanimi, aika;";
 
         $diaryentry = $pdo->query($sql);

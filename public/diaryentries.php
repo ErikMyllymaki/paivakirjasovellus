@@ -22,8 +22,9 @@ if(isset($id)){
 
 
 <?php
+$userid = $_SESSION["user_id"];
 
-$diaryEntries = getDiaryEntries();
+$diaryEntries = getDiaryEntries($userid);
 $keywords = getKeyWords();
 
 echo '<h2>Valitse avainsanat:</h2>';
