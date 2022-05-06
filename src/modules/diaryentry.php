@@ -68,28 +68,23 @@ function addDiaryEntry($kayttaja_id, $merkinta, $avainsanat){
 
 
 
-function getDiaryEntries() {
-    require_once MODULES_DIR.'db.php';
+// function getDiaryEntries() {
+//     require_once MODULES_DIR.'db.php';
 
-    try {
-        $pdo = getPdoConnection();
+//     try {
+//         $pdo = getPdoConnection();
 
-        $sql = "SELECT merkinta, aika, kayttajanimi, pk_merkinta.merkinta_id, avainsanarivi.avainsana_id, nimi
-                FROM avainsana INNER JOIN avainsanarivi ON avainsana.avainsana_id=avainsanarivi.avainsana_id
-                INNER JOIN pk_merkinta ON 
-                avainsanarivi.merkinta_id=pk_merkinta.merkinta_id
-                INNER JOIN kayttaja ON 
-                pk_merkinta.kayttaja_id=kayttaja.kayttaja_id
-                /* where? */
-                ORDER BY kayttajanimi, aika;";
+//         $sql = "SELECT pk_merkinta.merkinta_id, merkinta from pk_merkinta, avainsanarivi
+//         where (pk_merkinta.merkinta_id = avainsanarivi.merkinta_id)
+//         and avainsanarivi.avainsana_id in (1)";
 
-        $diaryentry = $pdo->query($sql);
+//         $diaryentry = $pdo->query($sql);
 
-        return $diaryentry->fetchAll();
-    } catch(PDOException $e) {
-        throw $e;
-    }
-}
+//         return $diaryentry->fetchAll();
+//     } catch(PDOException $e) {
+//         throw $e;
+//     }
+// }
 
 function deleteDiaryEntry($id){
 
