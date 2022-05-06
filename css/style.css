@@ -32,6 +32,10 @@ body {
     background-color: #e5d0e9;
 }
 
+p {
+    font-size: 20px;
+}
+
 h2 {
     padding-top: 50px;
 }
