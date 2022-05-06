@@ -81,7 +81,8 @@ textarea::-webkit-resizer {
 
 .btn-primary {
     background-color: rgba(129, 37, 133, 0.833);
-    margin: 20px;
+    margin: 30px;
+    margin-top: 10px;
     border: solid 1px rgba(101, 46, 78, 0.244);
 }
 
@@ -95,8 +96,22 @@ textarea::-webkit-resizer {
 }
 
 .paivakirjamerkinta {
-    background-color: white;
+    background: #f9f5fa;
     width: 400px;
     margin: auto;
     padding: 20px;
+    box-shadow: 0 5px 10px rgba(104, 29, 82, 0.316);
+}
+
+.valitseAvainsanat {
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+.radiobuttons {
+    margin-bottom: 20px;
+}
+
+.haeAvainsanat {
+    margin-bottom: 20px;
 }

@@ -4,8 +4,6 @@ include MODULES_DIR."diaryentry.php";
 include MODULES_DIR."diaryentries.php";
 
 
-
-
 $id = filter_input(INPUT_GET, "id");
 
 // if(isset($id)){
@@ -16,12 +14,6 @@ $id = filter_input(INPUT_GET, "id");
 //         throw $e;
 //     }
 // }
-
-
-
-
-
-
 
 ?>
 
@@ -34,7 +26,7 @@ $userid = $_SESSION["user_id"];
 
 
 $keywords = getKeyWords();
-echo '<h2>Valitse avainsanat:</h2>';
+echo '<h2 class="valitseAvainsanat">Valitse avainsanat:</h2>';
 
 ?>
 
@@ -43,7 +35,7 @@ echo '<h2>Valitse avainsanat:</h2>';
 // echo '<input type="radio" checked name="check" value="'.$keywords[0]['avainsana_id'].'">
 // <label for "'.$keywords[0]['nimi'].'">'. $keywords[0]['nimi'] .'</label>';
 for($x = 0; $x < sizeof($keywords); $x++) {
-    echo '<input type="radio" name="check" id="" value="'.$keywords[$x]['avainsana_id'].'">
+    echo '<input type="radio" name="check" class="radiobuttons" id="" value="'.$keywords[$x]['avainsana_id'].'">
     <label for "'.$keywords[$x]['nimi'].'">'. $keywords[$x]['nimi'] .'</label>';
 } 
 
@@ -52,7 +44,7 @@ for($x = 0; $x < sizeof($keywords); $x++) {
 
 ?>
 <br>
-<input type="submit" value="Hae" name="submit">
+<input type="submit" value="Hae" name="submit" class="btn btn-primary">
 </form>
 
 <?php
@@ -62,7 +54,7 @@ try {
         $diaryEntries = getDiaryEntries($_POST['check']);
    
     foreach($diaryEntries as $diaryEntry) {
-        echo "<div class='paivakirjamerkinta'><h2 class='pkaika'>". $diaryEntry["aika"] . "</h2><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p><p class='pkavainsana'>".$diaryEntry["merkinta_id"].' #'.$diaryEntry['nimi'] . $diaryEntry['avainsana_id'] ."</p></div><br></br>";
+        echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p><p class='pkavainsana'>".' #'.$diaryEntry['nimi']  ."</p></div><br></br>";
     }
 }
 } catch (Exception $e) {
@@ -73,14 +65,7 @@ try {
 //     echo "<h2>".$diaryEntry["merkinta"]."</h2><h3>".$diaryEntry["merkinta_id"]."</h3><p>".$diaryEntry["merkinta"].'<a href="diaryentries.php?id=' . $diaryEntry["merkinta_id"] . '" class="btn btn-primary">Poista</a> </li>'. "</p>" . $diaryEntry["nimi"] . "<br></br>" ;/* mapataanko kaikki avainsananimet yhteen kirjaukseen? */
 // }
 
-
-
-
 ?>
-
-
-
-    
 
 
 <?php
