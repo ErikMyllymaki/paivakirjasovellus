@@ -7,7 +7,7 @@ function getDiaryEntries($id) {
     try {
         $pdo = getPdoConnection();
 
-        $sql = ("SELECT avainsanarivi.avainsana_id, pk_merkinta.merkinta_id, merkinta from pk_merkinta, avainsanarivi
+        $sql = ("SELECT avainsanarivi.avainsana_id, pk_merkinta.merkinta_id, merkinta, nimi, aika from pk_merkinta, avainsanarivi, avainsana
         where (pk_merkinta.merkinta_id = avainsanarivi.merkinta_id)
         and avainsanarivi.avainsana_id = $id");
 

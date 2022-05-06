@@ -51,7 +51,8 @@ for($x = 0; $x < sizeof($keywords); $x++) {
 
 
 ?>
-<input type="submit" value="Submit" name="submit">
+<br>
+<input type="submit" value="Hae" name="submit">
 </form>
 
 <?php
@@ -61,7 +62,7 @@ try {
         $diaryEntries = getDiaryEntries($_POST['check']);
    
     foreach($diaryEntries as $diaryEntry) {
-        echo "<h2>".$diaryEntry["merkinta"]."</h2><h3>".$diaryEntry["merkinta_id"].' id'.$diaryEntry['avainsana_id'];
+        echo "<div class='paivakirjamerkinta'><h2>". $diaryEntry["aika"] . "</h2 class='pkaika'><br></br><p class='pkmerkinta'> " . $diaryEntry["merkinta"]."</p><p class='pkavainsana'>".$diaryEntry["merkinta_id"].' #'.$diaryEntry['nimi'] . $diaryEntry['avainsana_id'] ."</p></div><br></br>";
     }
 }
 } catch (Exception $e) {
