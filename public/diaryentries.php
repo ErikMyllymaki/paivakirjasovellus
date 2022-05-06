@@ -31,7 +31,7 @@ echo '<h2>Valitse avainsanat:</h2>';
 
 foreach($keywords as $keyword) {
     echo '<input type="checkbox" name="check[]" value="'.$keyword['avainsana_id'].'">
-    <label for "'.$keyword['nimi'].'">'. $keyword['nimi'] .'</label>';
+    <label id="keywords" for "'.$keyword['nimi'].'">'.  $keyword['nimi'] .'</label>';
 }
 
 foreach($diaryEntries as $diaryEntry) {
