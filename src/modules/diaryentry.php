@@ -74,11 +74,13 @@ function getDiaryEntries() {
     try {
         $pdo = getPdoConnection();
 
-        $sql = "SELECT merkinta, aika, kayttajanimi, merkinta_id, pk_merkinta.avainsana_id, nimi
-                FROM avainsana INNER JOIN pk_merkinta ON 
-                avainsana.avainsana_id=pk_merkinta.avainsana_id
+        $sql = "SELECT merkinta, aika, kayttajanimi, pk_merkinta.merkinta_id, avainsanarivi.avainsana_id, nimi
+                FROM avainsana INNER JOIN avainsanarivi ON avainsana.avainsana_id=avainsanarivi.avainsana_id
+                INNER JOIN pk_merkinta ON 
+                avainsanarivi.merkinta_id=pk_merkinta.merkinta_id
                 INNER JOIN kayttaja ON 
                 pk_merkinta.kayttaja_id=kayttaja.kayttaja_id
+                /* where? */
                 ORDER BY kayttajanimi, aika;";
 
         $diaryentry = $pdo->query($sql);
@@ -103,13 +105,14 @@ function deleteDiaryEntry($id){
         // start transaction 
         $pdo->beginTransaction();
 
-        // Delete from pk_merkinta table
-        $sql = "DELETE FROM pk_merkinta WHERE merkinta_id = ?";
+    
+        // Delete from avainsanarivi table
+        $sql = "DELETE FROM avainsanarivi WHERE merkinta_id = ?";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(1, $id);
         $statement->execute();
-        // Delete from avainsanarivi table
-        $sql = "DELETE FROM avainsanarivi WHERE merkinta_id = ?";
+        // Delete from pk_merkinta table
+        $sql = "DELETE FROM pk_merkinta WHERE merkinta_id = ?";
         $statement = $pdo->prepare($sql);
         $statement->bindParam(1, $id);
         $statement->execute();

@@ -23,3 +23,7 @@ try {
     <input type="text" id="keyword" name="keyword">
     <input type="submit" class="btn btn-primary" value="Lisää avainsana">
 </form>
+
+<?php
+include TEMPLATES_DIR.'footer.php';
+?>

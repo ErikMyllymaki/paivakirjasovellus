@@ -10,7 +10,7 @@ if(isset($id)){
         deleteDiaryEntry($id);
         echo '<div class="alert alert-success" role="alert">Merkintä poistettu!!</div>';
     } catch (Exception $e) {
-        echo 'ei voitu poistaa';
+        throw $e;
     }
 }
 
@@ -23,7 +23,7 @@ $diaryEntries = getDiaryEntries();
 
 
 foreach($diaryEntries as $diaryEntry) {
-    echo "<h2>".$diaryEntry["aika"]."</h2><h3>".$diaryEntry["kayttajanimi"]."</h3><p>".$diaryEntry["merkinta"].'<a href="diaryentries.php?id=' . $diaryEntry["merkinta_id"] . '" class="btn btn-primary">Poista</a> </li>'. "</p>";
+    echo "<h2>".$diaryEntry["aika"]."</h2><h3>".$diaryEntry["kayttajanimi"]."</h3><p>".$diaryEntry["merkinta"].'<a href="diaryentries.php?id=' . $diaryEntry["merkinta_id"] . '" class="btn btn-primary">Poista</a> </li>'. "</p>" . $diaryEntry["nimi"] . "<br></br>" ;/* mapataanko kaikki avainsananimet yhteen kirjaukseen? */
 }
 
 include TEMPLATES_DIR.'footer.php';
