@@ -2,6 +2,8 @@
 include TEMPLATES_DIR."header.php";
 include MODULES_DIR."diaryentry.php";
 include MODULES_DIR."diaryentries.php";
+include MODULES_DIR."keyword.php";
+
 
 
 $id = filter_input(INPUT_GET, "id");
@@ -54,6 +56,13 @@ try {
         if(!empty($_POST['check'])) {
             $ids = implode(', ', $_POST['check']);
             $diaryEntries = getDiaryEntries($ids, $userid);
+            $keyWordNames = getSelectedKeywords($ids);
+
+            echo "<h4>Haetaan avainsanoilla ";
+            foreach($keyWordNames as $keyWordName) {
+               echo "#".$keyWordName['nimi']." "; 
+            }
+            echo "</h4>";
 
             if ($diaryEntries) {
                 foreach($diaryEntries as $diaryEntry) {
