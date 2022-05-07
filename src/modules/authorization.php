@@ -4,8 +4,6 @@ function login($uname, $pw) {
 
     require_once MODULES_DIR . 'db.php';
 
-    // $uname = filter_input(INPUT_POST, "uname");
-    // $pw = filter_input(INPUT_POST, "pw");
 
     //Tarkistetaan onko muttujia asetettu
     if (!isset($uname) || !isset($pw)) {
