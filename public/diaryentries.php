@@ -77,7 +77,6 @@ try {
                     }
 
                     echo "</p><a href=diaryentries.php?id=" . $diaryEntry["merkinta_id"] . " class='btn btn-primary'>Poista</a></div><br></br>";
-                // <p class='pkavainsana'>".'#'.$diaryEntry['nimi']  .;
                 }
             } else {
                 echo '<div class="alert alert-danger" role="alert">Ei merkintöjä valituilla hakusanoilla</div>';

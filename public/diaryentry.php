@@ -2,31 +2,24 @@
 include TEMPLATES_DIR.'header.php';
 require_once MODULES_DIR.'db.php';
 include MODULES_DIR.'diaryentry.php';
-// include MODULES_DIR.'authorization.php';
+include MODULES_DIR.'keyword.php';
 
-
-
-// try {
-//     $pdo = getPdoConnection();
-
-//     $sql = "select nimi from avainsana";
-//     $avainsanat = $pdo->query($sql);
-//     // $avainsanat->fetchAll();
-// }catch(PDOException $e) {
-//     throw $e;
-// }
 
 $diary = filter_input(INPUT_POST, "diary");
 $keywords = getKeyWords();
 $user_id = $_SESSION["user_id"];
 
 try {
-    if(isset($user_id) && isset($diary) && isset($_POST['check'])){
-        addDiaryEntry($user_id, $diary, $_POST['check']);
-        $ids = implode(', ', $_POST['check']);
-        echo '<div class="alert alert-success" role="alert">Kirjaus tehty!!</div>';
+    if(isset($user_id)) {
+                if(isset($diary) && isset($_POST['check'])){
+                addDiaryEntry($user_id, $diary, $_POST['check']);
+                $ids = implode(', ', $_POST['check']);
+                echo '<div class="alert alert-success" role="alert">Kirjaus tehty!!</div>';
+            }
+    } else {
+        echo '<div class="alert alert-danger" role="alert">Kirjaudu sisään tehdeksäsi merkintöjä!</div>';
     }
-} catch (Exception $e) {
+    } catch (Exception $e) {
     throw $e;
 }
 
@@ -39,6 +32,7 @@ try {
         <textarea id="diary" name="diary"></textarea><br/>
 
         <?php
+            echo '<h4>Aseta avainsanat kirjaukselle:</h4>';
             foreach($keywords as $keyword) {
                 echo '<input type="checkbox" name="check[]" value="'.$keyword['avainsana_id'].'"><label for "'.$keyword['nimi'].'">'. $keyword['nimi'] .'</label> ';
             }
