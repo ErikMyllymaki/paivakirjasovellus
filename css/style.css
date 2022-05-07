@@ -125,6 +125,11 @@ textarea::-webkit-resizer {
     textarea {
         width: 95%;
     }
+
+    #box {
+        width: 95%;
+    }
+    
 }
 
 @media screen and (max-width: 420px) {
