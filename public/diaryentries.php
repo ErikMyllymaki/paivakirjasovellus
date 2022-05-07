@@ -59,12 +59,12 @@ try {
             $keyWordNames = getSelectedKeywords($ids);
 
 
+            echo "<h4>Haetaan avainsanoilla ";
+            foreach($keyWordNames as $keyWordName) {
+               echo "#".$keyWordName['nimi']." "; 
+            }
 
             if ($diaryEntries) {
-                echo "<h4>Haetaan avainsanoilla ";
-                foreach($keyWordNames as $keyWordName) {
-                   echo "#".$keyWordName['nimi']." "; 
-                }
                 echo "</h4>";
                 foreach($diaryEntries as $diaryEntry) {
                     echo "<div class='paivakirjamerkinta'><h3 class='pkaika'>Aika: ". $diaryEntry["aika"] . "</h3><p class='pkmerkinta'> " . $diaryEntry["merkinta"];
